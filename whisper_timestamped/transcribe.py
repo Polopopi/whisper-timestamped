@@ -2441,7 +2441,7 @@ def load_model(
         # TODO: does in_memory makes sense?
         cache_dir=os.path.join(download_root, "huggingface", "hub") if download_root else None
         try:
-            generation_config = transformers.GenerationConfig.from_pretrained(name, cache_dir=cache_dir)
+            generation_config = transformers.GenerationConfig.from_pretrained(name)
         except OSError:
             generation_config = transformers.GenerationConfig.from_pretrained("openai/whisper-tiny", cache_dir=cache_dir)
         processor = transformers.WhisperProcessor.from_pretrained(name, cache_dir=cache_dir)
