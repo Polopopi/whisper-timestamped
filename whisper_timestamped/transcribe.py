@@ -2439,7 +2439,7 @@ def load_model(
             name = f"openai/whisper-{name}"
         # TODO: use download_root
         # TODO: does in_memory makes sense?
-        cache_dir=os.path.join(download_root, "huggingface", "hub") if download_root else None,
+        cache_dir=os.path.join(download_root, "huggingface", "hub") if download_root else None
         try:
             generation_config = transformers.GenerationConfig.from_pretrained(name, cache_dir=cache_dir)
         except OSError:
@@ -2560,7 +2560,7 @@ def torch_load(model_path):
                 for k in f.keys():
                     hf_state_dict[k] = f.get_tensor(k)
         else:
-            hf_state_dict = torch.load(model_path, map_location="cpu")
+            hf_state_dict = torch.load(model_path, map_location="CPU", weights_only=False)
     return hf_state_dict
 
 # Some helpers to manage transformers/openai-whisper model
