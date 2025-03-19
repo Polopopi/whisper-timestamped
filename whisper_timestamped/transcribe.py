@@ -2444,7 +2444,7 @@ def load_model(
             generation_config = transformers.GenerationConfig.from_pretrained(name)
         except OSError:
             generation_config = transformers.GenerationConfig.from_pretrained("openai/whisper-tiny", cache_dir=cache_dir)
-        processor = transformers.WhisperProcessor.from_pretrained(name, cache_dir=cache_dir)
+        processor = transformers.WhisperProcessor.from_pretrained(name)
         if device is None:
             device = "cuda" if torch.cuda.is_available() else "cpu"
         precision = torch.float32
